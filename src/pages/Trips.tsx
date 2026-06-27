@@ -4,7 +4,6 @@ import {
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
 
 import {
   createPost,
@@ -18,16 +17,11 @@ import type {
   PostFormData,
 } from '../api/postsApi';
 
-import { useAuthStore } from '../store/authStore';
-
 import PostCard from '../components/PostCard';
 import PostFormModal from '../components/PostFormModal';
 import ConfirmModal from '../components/ConfirmModal';
 
 function Trips() {
-  const user = useAuthStore((state) => state.user);
-  const logout = useAuthStore((state) => state.logout);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingPost, setEditingPost] = useState<Post | null>(null);
   const [deletingPostId, setDeletingPostId] = useState<number | null>(null);
